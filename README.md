@@ -1,2 +1,2 @@
 # Plantly
-Code for Project One Plantly
+Code for Instructable Plantly
