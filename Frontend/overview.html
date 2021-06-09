@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Plantly - Felix Platteau</title>
+    <meta name="description" content="Project One" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="msapplication-TileColor" content="#78C278" />
+    <meta name="theme-color" content="#78C278" />
+
+    <link rel="stylesheet" href="style/css/normalize.css" />
+    <link rel="stylesheet" href="style/css/screen.css" />
+
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js" integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous"></script>
+    <script src="script/dataHandler.js"></script>
+    <script src="script/overview.js"></script>
+  </head>
+  <body>
+    <!-- navigation -->
+    <div class="c-nav u-color-background-dark">
+      <a class="c-logo__link js-logoLink" href="http://192.168.168.168">
+        <div class="c-nav__logo">
+          <img class="c-nav__image" src="style/img/svg/logo.svg" alt="Billy Billy" />
+          <h1 class="c-nav__text">Plantly</h1>
+        </div>
+      </a>
+
+      <a class="c-nav__link js-buttonHistory" href="#">History</a>
+      <a class="c-nav__link js-buttonActions" href="#">Actions</a>
+      <a class="c-nav__link js-buttonDevices" href="#">Devices</a>
+    </div>
+
+    <!-- Page content -->
+    <div class="c-main">
+      <h1 class="c-main__title">Overview</h1>
+
+      <div class="c-search">
+        <input type="text" class="c-search__input js-search u-hidden" onkeyup="myFunction()" placeholder="Search for device ID ..." />
+      </div>
+      
+
+      <table class="c-table js-table">
+        <tr>
+          <th>History ID</th>
+          <th>Action date</th>
+          <th>Value</th>
+          <th>Device ID</th>
+          <th>Action ID</th>
+        </tr>
+        <tr>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+  <script>
+    function myFunction() {
+      // Declare variables
+      let search, filter, table, tr, td, row, column, value;
+      search = document.querySelector('.js-search');
+      filter = search.value.toUpperCase();
+      table = document.querySelector('.js-table');
+      tr = table.getElementsByTagName('tr');
+
+      // zoeken in
+      for (row of tr) {
+        td = row.getElementsByTagName('td')[3];
+        if (td) {
+          value = td.innerHTML;
+          if (value.toUpperCase().indexOf(filter) > -1) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        }
+      }
+    }
+  </script>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="160" height="137" viewBox="0 0 160 137">
+  <defs>
+    <clipPath id="clip-Face_-_sad">
+      <rect width="160" height="137"/>
+    </clipPath>
+  </defs>
+  <g id="Face_-_sad" data-name="Face - sad" clip-path="url(#clip-Face_-_sad)">
+    <circle id="Ellipse_10" data-name="Ellipse 10" cx="16" cy="16" r="16" transform="translate(32 32)" fill="#0f2111"/>
+    <circle id="Ellipse_11" data-name="Ellipse 11" cx="16" cy="16" r="16" transform="translate(96 32)" fill="#0f2111"/>
+    <path id="Rectangle_612" data-name="Rectangle 612" d="M0,0H96a0,0,0,0,1,0,0V0A25,25,0,0,1,71,25H25A25,25,0,0,1,0,0V0A0,0,0,0,1,0,0Z" transform="translate(128 105) rotate(180)" fill="#0f2111"/>
+  </g>
+</svg>

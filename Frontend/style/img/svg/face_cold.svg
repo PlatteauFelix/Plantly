@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="160" height="137" viewBox="0 0 160 137">
+  <defs>
+    <clipPath id="clip-Face_-_cold">
+      <rect width="160" height="137"/>
+    </clipPath>
+  </defs>
+  <g id="Face_-_cold" data-name="Face - cold" clip-path="url(#clip-Face_-_cold)">
+    <circle id="Ellipse_10" data-name="Ellipse 10" cx="16" cy="16" r="16" transform="translate(32 32)" fill="#0f2111"/>
+    <circle id="Ellipse_11" data-name="Ellipse 11" cx="16" cy="16" r="16" transform="translate(96 32)" fill="#0f2111"/>
+    <rect id="Rectangle_617" data-name="Rectangle 617" width="64" height="23" rx="11.5" transform="translate(48 72)" fill="#0f2111"/>
+    <rect id="Rectangle_618" data-name="Rectangle 618" width="48" height="11" rx="5.5" transform="translate(56 72)" fill="#fff"/>
+    <rect id="Rectangle_619" data-name="Rectangle 619" width="48" height="11" rx="5.5" transform="translate(56 84)" fill="#fff"/>
+  </g>
+</svg>

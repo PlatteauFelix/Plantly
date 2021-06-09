@@ -1,0 +1,595 @@
+/*------------------------------------*\
+  #FONTS
+\*------------------------------------*/
+@font-face {
+  font-family: 'Inter Web';
+  font-weight: 400;
+  src: url('../fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter Web';
+  font-weight: 600;
+  src: url('../fonts/Inter-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter Web';
+  font-weight: 700;
+  src: url('../fonts/Inter-Bold.woff2') format('woff2');
+}
+
+/*------------------------------------*\
+  #GENERIC
+\*------------------------------------*/
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+html {
+  font-size: 18px;
+  line-height: 32px;
+  font-family: 'Inter Web', Helvetica, arial, sans-serif;
+  color: #0f2111;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(red, blue);
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(blue, red);
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Customize the background color to match your design.
+ */
+
+::selection {
+  background: #3385ff;
+  color: white;
+  text-shadow: none;
+}
+
+/*------------------------------------*\
+  #Elements
+\*------------------------------------*/
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+h1 {
+  font-size: 32px;
+  line-height: 40px;
+  margin: 0;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 32px;
+  margin: 0;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 32px;
+  margin: 0;
+  font-weight: 700;
+}
+
+p {
+  font-size: 18px;
+  line-height: 32px;
+  margin: 0;
+  font-weight: 200;
+}
+
+/*------------------------------------*\
+  #OBJECTS
+\*------------------------------------*/
+/*
+    Objects: content
+    ---
+    centers content
+*/
+.o-content {
+  text-align: center;
+  align-items: center;
+  padding-bottom: 32px;
+}
+
+/*
+    Objects: article
+    ---
+    padding between articles
+*/
+.o-article {
+  padding: 32px 0 32px 0;
+}
+
+/*------------------------------------*\
+  #COMPONENTS
+\*------------------------------------*/
+/*
+    Component: top of website
+    ---
+    contains the logo+text AND intro title+text
+*/
+.c-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*
+    Component: logo
+    ---
+    logo image and text
+*/
+.c-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.c-logo__link {
+  text-decoration: none;
+  color: #0f2111;
+}
+
+.c-logo__image {
+  max-height: 48px;
+  margin-right: 8px;
+}
+
+@media (min-width: 768px) {
+  .c-logo__image {
+    max-height: 96px;
+  }
+  .c-logo__text {
+    font-size: 40px;
+    line-height: 48px;
+  }
+}
+
+@media (min-width: 992px) {
+  .c-logo__image {
+    max-height: 144px;
+  }
+  .c-logo__text {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .c-logo__image {
+    max-height: 192px;
+  }
+  .c-logo__text {
+    font-size: 56px;
+    line-height: 64px;
+  }
+}
+
+/*
+    Component: intro
+    ---
+    intro title and text
+*/
+.c-intro {
+  text-align: center;
+  max-width: 311px;
+  margin: 32px;
+}
+
+.c-intro__title {
+  margin-bottom: 16px;
+}
+
+.c-intro__button {
+  text-decoration: none;
+  color: #0f2111;
+  display: inline-block;
+  padding: 8px 16px;
+  margin-top: 16px;
+  border-radius: 20px;
+}
+
+@media (min-width: 768px) {
+  .c-intro__title {
+    font-size: 40px;
+    line-height: 48px;
+  }
+}
+
+@media (min-width: 992px) {
+  .c-intro__title {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .c-intro__title {
+    font-size: 56px;
+    line-height: 64px;
+  }
+}
+
+/*
+    Component: sensor
+    ---
+    contains the icon for the sensor, the name of the sensor and checkmark if value is OK or not
+*/
+.c-sensor {
+  display: flex;
+  margin-bottom: 16px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-sensor__title {
+  justify-content: center;
+  margin-left: 8px;
+}
+
+.c-sensor__icon {
+  color: #0f2111;
+  max-height: 32px;
+}
+
+/*
+    Component: range value
+    ---
+    cannot be part of c-range because it needs to stand above it
+*/
+.c-rangeValue {
+  font-weight: 400;
+}
+.c-rangeValue__percent::after {
+  content: '%';
+}
+.c-rangeValue__lux::after {
+  content: ' lux';
+}
+.c-rangeValue__degrees::after {
+  content: '°C';
+}
+
+/*
+    Component: range sliders
+    ---
+    range sliders to show the values of the sensors
+*/
+.c-range {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-rangeMin {
+  min-width: 53px;
+  text-align: right;
+}
+.c-rangeMax {
+  min-width: 53px;
+  text-align: left;
+}
+
+.c-rangeSlider {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 0 4px;
+  height: 2px;
+  background: #0f2111;
+  border-radius: 20px;
+  z-index: 1;
+}
+.c-rangeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #0f2111;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .c-range {
+    margin: 0 64px;
+  }
+}
+
+@media (min-width: 992px) {
+  .c-range {
+    margin: 0 128px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .c-range {
+    margin: 0 256px;
+  }
+}
+
+/*
+    Component: optimal range slider
+    ---
+    range sliders to visualize the optimal values of the sensors
+*/
+.c-rangeSliderOptimal {
+  -webkit-appearance: none;
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  margin: 0 54px;
+  background: linear-gradient(90deg, #ff0000, #0000ff);
+  border-radius: 20px;
+}
+.c-rangeSliderOptimal::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  display: hidden;
+}
+
+/*
+    Component: warning
+    ---
+    warning section if value is bad, u-hidden as utility to hide it
+*/
+.c-warning__icon {
+  color: #0f2111;
+  max-height: 20px;
+}
+
+@media (min-width: 768px) {
+  .c-warning {
+    margin: 0 64px;
+  }
+}
+
+@media (min-width: 992px) {
+  .c-warning {
+    margin: 0 128px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .c-warning {
+    margin: 0 256px;
+  }
+}
+
+
+/*------------------------------------*\
+  # OVERVIEW html page
+\*------------------------------------*/
+
+/*------------------------------------*\
+  # COMPONENTS
+\*------------------------------------*/
+/*
+    Component: navbar
+    ---
+     nav bar on the overview page
+*/
+/* The bar menu */
+.c-nav {
+  display: flex;
+  width: 100%;
+  position:sticky;
+  flex-direction: row;
+  z-index: 1;
+  top: 0;
+  padding: 16px 0px;
+  justify-content: space-evenly;
+}
+
+.c-nav__logo {
+  display: none;
+}
+
+/* The navigation menu links */
+.c-nav__link {
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 32px;
+  color: #0f2111;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.c-nav__link:hover {
+  color: darkgrey;
+}
+
+@media (min-width: 768px) {
+  .c-nav {
+    display: flex;
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 16px;
+    justify-content: start;
+  }
+
+  .c-nav__logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .c-nav__image {
+    max-height: 48px;
+    margin-right: 8px;
+  }
+
+  .c-nav__text {
+    font-size: 24px;
+  }
+
+  .c-nav__link {
+    margin: 16px 0px;
+  }
+}
+
+@media (min-width: 992px) {
+  .c-nav {
+    width: 200px;
+  }
+
+  .c-nav__image {
+    max-height: 64px;
+  }
+
+  .c-nav__text {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .c-nav {
+    width: 240px;
+  }
+
+  .c-nav__image {
+    max-height: 64px;
+  }
+
+  .c-nav__text {
+    font-size: 32px;
+  }
+}
+
+/* Style page content */
+.c-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 16px
+}
+
+.c-main__title {
+  margin-top: 16px;
+}
+
+@media (min-width: 768px) {
+  .c-main {
+    margin-left: 176px;
+  }
+}
+
+@media (min-width: 992px) {
+  .c-main {
+    margin-left: 232px;
+    margin-right: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .c-main {
+    margin-left: 304px;
+    margin-right: 64px;
+  }
+}
+
+.c-search {
+  display: flex;
+  width: 90%;
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+.c-search__input {
+  flex-grow: 1;
+  padding: 8px 16px;
+  border: 2px solid #0f2111;
+}
+
+
+.c-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0px;
+  font-size: 12px;
+}
+
+.c-table th{
+  border: 2px solid #0f2111;
+  text-align: center;
+}
+
+.c-table td{
+  border: 2px solid #0f2111;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .c-table {
+    font-size: 16px;
+  }
+}
+
+
+
+/*------------------------------------*\
+  #UTILITIES
+\*------------------------------------*/
+
+/*
+    Utilities: color
+    ---
+    Utility classes to put specific colors onto elements
+*/
+
+.u-color-text {
+  color: #4b6b4e;
+}
+
+.u-color-background-dark {
+  background-color: #78c278;
+}
+
+.u-color-background-light {
+  background-color: #d3f3d6;
+}
+
+.u-hidden {
+  display: none;
+}

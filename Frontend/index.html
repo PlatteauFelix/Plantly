@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Plantly - Felix Platteau</title>
+        <meta name="description" content="Project One">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="msapplication-TileColor" content="#78C278">
+        <meta name="theme-color" content="#78C278">
+
+        <link rel="stylesheet" href="style/css/normalize.css">
+        <link rel="stylesheet" href="style/css/screen.css">
+
+        <script src="https://cdn.socket.io/4.0.1/socket.io.min.js" integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous"></script>
+        <script src="script/app.js"></script>
+    </head>
+    <body>
+
+        <div class="c-top">
+            <a class="c-logo__link js-logoLink" href="http://192.168.168.168/overview.html">
+                <header class="c-logo">
+                    <img class="c-logo__image" src="style/img/svg/logo.svg" alt="Billy Billy">
+                    <h1 class="c-logo__text">Plantly</h1>
+                </header>
+            </a>
+
+
+            <section class="o-intro c-intro">
+                <!-- <h1 class="c-intro__title">
+                    My Plant
+                </h1>
+                <p class="c-intro__text u-color-text">
+                    Here you can see the stats and needs of your precious plant.
+                </p> -->
+                <img class="c-intro__image js-screenFace" src="style/img/svg/face_normal.svg" alt="Face plantly">
+                <a href="#!" class="c-intro__button js-screenButton u-color-background-dark">Turn screens and speakers off</a>
+                <a href="#!" class="c-intro__button js-speakerButton u-color-background-dark">Turn speakers on</a>
+            </section>
+        </div>
+
+
+        
+        <section class="o-content u-color-background-dark">
+            <article class="o-article u-color-background-dark">
+                <div class="c-sensor">
+                    <img class="c-sensor__icon" src="style/img/svg/water_drop_black_48dp.svg" alt="Water drop">
+                    <h2 class="c-sensor__title">Moisture</h2>
+                    <img class="c-warning__icon js-warningMoistureIcon" src="style/img/svg/done_black_48dp.svg" alt="Sensor value is ok">
+                </div>
+                <span class="c-rangeValue c-rangeValue__percent js-rangeValueMoisture">50</span>
+                <div class="c-range">
+                    <p class="c-rangeMin">0</p>
+                    <input class="c-rangeSliderOptimal js-rangeSliderMoistureOptimal" type="range" value="50" min="30" max="70"></input>
+                    <input class="c-rangeSlider js-rangeSliderMoisture" type="range" value="50" min="0" max="100" ></input>
+                    <p class="c-rangeMax">100</p>
+                </div>
+                <div class="c-warning js-warningMoisture u-hidden">
+                    <h3>Warning!</h3>
+                    <p>Moisture level is too low.</p>
+                    <p>Keep it between the marked values for the optimal health of your plant.</p>
+                </div>
+            </article>
+            <article class="o-article u-color-background-light">
+                <div class="c-sensor">
+                    <img class="c-sensor__icon" src="style/img/svg/light_mode_black_48dp.svg" alt="Sun">
+                    <h2 class="c-sensor__title">Sunlight</h2>
+                    <img class="c-warning__icon js-warningSunlightIcon" src="style/img/svg/done_black_48dp.svg" alt="Sensor value is ok">
+                </div>
+                <span class="c-rangeValue c-rangeValue__lux js-rangeValueSunlight">5000</span>
+                <div class="c-range">
+                    <p class="c-rangeMin">0</p>
+                    <input class="c-rangeSliderOptimal js-rangeSliderSunlightOptimal" type="range" value="5000" min="200" max="4000"></input>
+                    <input class="c-rangeSlider js-rangeSliderSunlight" type="range" value="2000" min="0" max="10000" ></input>
+                    <p class="c-rangeMax">10000</p>
+                </div>
+                <div class="c-warning js-warningSunlight u-hidden">
+                    <h3>Warning!</h3>
+                    <p class="js-warningSunlightText">Sunlight level is too low. Keep it between the marked values for the optimal health of your plant.</p>
+                </div>                
+            </article>
+            <article class="o-article u-color-background-dark">
+                <div class="c-sensor">
+                    <img class="c-sensor__icon" src="style/img/svg/thermostat_black_48dp.svg" alt="Thermostat">
+                    <h2 class="c-sensor__title">Temperature</h2>
+                    <img class="c-warning__icon js-warningTemperatureIcon" src="style/img/svg/done_black_48dp.svg" alt="Sensor value is ok">
+                </div>
+                <span class="c-rangeValue c-rangeValue__degrees js-rangeValueTemperature">20</span>
+                <div class="c-range">
+                    <p class="c-rangeMin">0</p>
+                    <input class="c-rangeSliderOptimal js-rangeSliderTemperatureOptimal" type="range" value="20" min="13" max="30"></input>
+                    <input class="c-rangeSlider js-rangeSliderTemperature" type="range" value="20" min="0" max="40" ></input>
+                    <p class="c-rangeMax">40</p>
+                </div>
+                <div class="c-warning js-warningTemperature u-hidden">
+                    <h3>Warning!</h3>
+                    <p class="js-warningTemperatureText">Temperature level is too low. Keep it between the marked values for the optimal health of your plant.</p>
+                </div>
+            </article>
+            <article class="o-article u-color-background-light">
+                <div class="c-sensor">
+                    <img class="c-sensor__icon" src="style/img/svg/air_black_48dp.svg" alt="Air/ wind">
+                    <h2 class="c-sensor__title">Humidity</h2>
+                    <img class="c-warning__icon js-warningHumidityIcon" src="style/img/svg/done_black_48dp.svg" alt="Sensor value is ok">
+                </div>
+                <span class="c-rangeValue c-rangeValue__percent js-rangeValueHumidity">50</span>
+                <div class="c-range">
+                    <p class="c-rangeMin">0</p>
+                    <input class="c-rangeSliderOptimal js-rangeSliderHumidityOptimal" type="range" value="50" min="30" max="75"></input>
+                    <input class="c-rangeSlider js-rangeSliderHumidity" type="range" value="50" min="0" max="100" ></input>
+                    <p class="c-rangeMax">100</p>
+                </div>
+                <div class="c-warning js-warningHumidity u-hidden">
+                    <h3>Warning!</h3>
+                    <p class="js-warningHumidityText">Humidity level is too low. Keep it between the marked values for the optimal health of your plant.</p>
+                </div>                
+            </article>
+            <article class="o-article u-color-background-dark">
+                <div class="c-sensor">
+                    <img class="c-sensor__icon" src="style/img/svg/co2_black_48dp.svg" alt="CO2">
+                    <h2 class="c-sensor__title">Air quality</h2>
+                    <img class="c-warning__icon js-warningAirIcon" src="style/img/svg/done_black_48dp.svg" alt="Sensor value is ok">
+                </div>
+                <span class="c-rangeValue c-rangeValue__percent js-rangeValueAir">50</span>
+                <div class="c-range">
+                    <p class="c-rangeMin">0</p>
+                    <input class="c-rangeSliderOptimal js-rangeSliderAirOptimal" type="range" value="50" min="0" max="21"></input>
+                    <input class="c-rangeSlider js-rangeSliderAir" type="range" value="5" min="0" max="100" ></input>
+                    <p class="c-rangeMax">100</p>
+                </div>
+                <div class="c-warning js-warningAir u-hidden">
+                    <h3>Warning!</h3>
+                    <p class="js-warningAirText">Air level is too low. Keep it between the marked values for the optimal health of your plant.</p>
+                </div>                
+            </article>
+        </section>
+    </body>
+</html>

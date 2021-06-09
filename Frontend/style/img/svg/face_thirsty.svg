@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="160" height="137" viewBox="0 0 160 137">
+  <defs>
+    <clipPath id="clip-Face_-_thirsty">
+      <rect width="160" height="137"/>
+    </clipPath>
+  </defs>
+  <g id="Face_-_thirsty" data-name="Face - thirsty" clip-path="url(#clip-Face_-_thirsty)">
+    <path id="Subtraction_2" data-name="Subtraction 2" d="M4475.071,3008.728a15.854,15.854,0,0,1-9.715-3.286,16.113,16.113,0,0,1-5.67-8.3l30.913-8.283a16,16,0,0,1-15.527,19.874Z" transform="matrix(0.966, -0.259, 0.259, 0.966, -5050.72, -1684.233)" fill="#0f2111"/>
+    <path id="Subtraction_1" data-name="Subtraction 1" d="M4473,3008.728a16,16,0,0,1-16-16,16.065,16.065,0,0,1,.47-3.863l30.912,8.283a16.116,16.116,0,0,1-5.671,8.3A15.85,15.85,0,0,1,4473,3008.728Z" transform="matrix(0.966, 0.259, -0.259, 0.966, -3432.451, -4000.163)" fill="#0f2111"/>
+    <rect id="Rectangle_612" data-name="Rectangle 612" width="64" height="32" rx="16" transform="translate(48 83)" fill="#0f2111"/>
+    <rect id="Rectangle_616" data-name="Rectangle 616" width="16" height="32" rx="8" transform="translate(72 99)" fill="blue"/>
+  </g>
+</svg>
