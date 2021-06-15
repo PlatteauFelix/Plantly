@@ -7,7 +7,7 @@
     <meta name="description" content="Project One" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="msapplication-TileColor" content="#78C278" />
-    <link rel="icon" type="image/svg" href="style/img/svg/logo.svg"/>
+    <link rel="icon" type="image/svg" href="style/img/svg/logo.svg" />
     <meta name="theme-color" content="#78C278" />
 
     <link rel="stylesheet" href="style/css/normalize.css" />
@@ -36,9 +36,27 @@
       <h1 class="c-main__title">Overview</h1>
 
       <div class="c-search">
-        <input type="text" class="c-search__input js-search u-hidden" onkeyup="myFunction()" placeholder="Search for device ID ..." />
+        <!-- <input type="text" class="c-search__input js-search u-hidden" onkeyup="myFunction()" placeholder="Search for device name ..." /> -->
+        <select class="c-search__input js-search" onclick="myFunction()">
+          <option value="" selected>all devices</option>
+          <optgroup label="Sensors">
+            <option value="infrared light">IR sensor</option>
+            <option value="UV light">UV sensor</option>
+            <option value="visible light">Visible light sensor</option>
+            <option value="air">Air quality sensor</option>
+            <option value="temperature">Temperature sensor</option>
+            <option value="humidity">Humidity sensor</option>
+            <option value="moisture">Moisture sensor</option>
+          </optgroup>
+
+          <optgroup label="Actuators">
+            <option value="eye left">Left eye display</option>
+            <option value="eye right">Right eye display</option>
+            <option value="mouth left">Left mouth display</option>
+            <option value="mouth right">Right mouth display</option>
+          </optgroup>
+        </select>
       </div>
-      
 
       <table class="c-table js-table">
         <tr>
