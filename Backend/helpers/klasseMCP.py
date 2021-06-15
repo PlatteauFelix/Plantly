@@ -34,7 +34,7 @@ class SPI:
         return round(self.read_channel(0)/1023*100)
 
     def read_moist(self):
-        return round(self.read_channel(1)/1023*100)
+        return round(self.read_channel(1)/950*100)
 
 # spi = SPI()
 # try:

@@ -43,16 +43,21 @@ speaker_state = False
 # lcd with ip address
 lcd = LCD(0x27)
 ips = check_output(['hostname', '-I']).split()
-if len(ips) > 1:
+if len(ips) > 1 and ips[0].decode() == '192.168.168.168':
     lan = ips[0].decode()
     wlan = ips[1].decode()
     lcd.lcd_string(f'{lan}', lcd.LCD_LINE_1)
     lcd.lcd_string(f'{wlan}', lcd.LCD_LINE_2)
-else:
-    message = 'No internet'
+elif len(ips) == 1 and ips[0].decode() == '192.168.168.168':
+    message = 'Fallback IP'
     lan = ips[0].decode()
     lcd.lcd_string(f'{message}', lcd.LCD_LINE_1)
     lcd.lcd_string(f'{lan}', lcd.LCD_LINE_2)
+else:
+    message = 'Site IP address'
+    wlan = ips[0].decode()
+    lcd.lcd_string(f'{message}', lcd.LCD_LINE_1)
+    lcd.lcd_string(f'{wlan}', lcd.LCD_LINE_2)
 
 
 # Code voor Flask
@@ -68,11 +73,11 @@ CORS(app)
 def read_values():
     while True:
         moist = spi.read_moist()
-        if moist is not 0:
+        if moist is not -1:
             print('*** Read all values **')
             VIS, UV, IR = sunlight.read_values()
             humi, temp = temphumi.read_values()
-            temp -= 2   # temperatuur overdijft een beetje want heeft maar een accuraatheid van 2graden en rond af naar boven
+            temp -= 3   # temperatuur overdijft een beetje want heeft maar een accuraatheid van 2graden en rond af naar boven
             air = spi.read_air()
             print(moist, IR, temp, humi, air)
 
