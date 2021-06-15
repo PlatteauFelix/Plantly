@@ -120,6 +120,14 @@ p {
   text-align: center;
   align-items: center;
   padding-bottom: 32px;
+  margin: 32px 32px;
+  box-shadow: 5px 10px 20px #888888;
+}
+
+@media (min-width: 768px){
+  .o-content {
+    margin: 32px 64px;
+  }
 }
 
 /*
@@ -196,6 +204,13 @@ p {
     font-size: 56px;
     line-height: 64px;
   }
+}
+
+.c-shutdown--button {
+  display: block;
+  position: absolute;
+  top: 32px;
+  right: 32px;
 }
 
 /*
@@ -326,19 +341,19 @@ p {
 
 @media (min-width: 768px) {
   .c-range {
-    margin: 0 64px;
+    margin: 0 48px;
   }
 }
 
 @media (min-width: 992px) {
   .c-range {
-    margin: 0 128px;
+    margin: 0 96px;
   }
 }
 
 @media (min-width: 1200px) {
   .c-range {
-    margin: 0 256px;
+    margin: 0 192px;
   }
 }
 
@@ -412,10 +427,26 @@ p {
   top: 0;
   padding: 16px 0px;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .c-nav__logo {
-  display: none;
+  display: flex;
+  align-items: center;
+  margin-right: 0px;
+}
+
+.c-nav__image {
+  max-height: 48px;
+  margin-right: 8px;
+}
+
+.c-nav__text {
+  font-size: 24px;
+}
+
+.c-nav__link {
+  margin: 16px 0px;
 }
 
 /* The navigation menu links */
@@ -430,6 +461,12 @@ p {
 /* When you mouse over the navigation links, change their color */
 .c-nav__link:hover {
   color: darkgrey;
+}
+
+@media (min-width: 470px){
+  .c-nav__logo {
+    margin-right: 64px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -449,22 +486,8 @@ p {
   }
 
   .c-nav__logo {
-    display: flex;
-    align-items: center;
+    margin-right: 0px;
     margin-bottom: 16px;
-  }
-
-  .c-nav__image {
-    max-height: 48px;
-    margin-right: 8px;
-  }
-
-  .c-nav__text {
-    font-size: 24px;
-  }
-
-  .c-nav__link {
-    margin: 16px 0px;
   }
 }
 
@@ -587,9 +610,23 @@ p {
 }
 
 .u-color-background-light {
-  background-color: #d3f3d6;
+  background-color: #EEEEEE;
 }
 
 .u-hidden {
   display: none;
+}
+
+.u-active {
+  background-color: #78c278;
+}
+.u-active:hover {
+  background-color: #95d095;
+}
+
+.u-inactive {
+  background-color: #CCCCCC;
+}
+.u-inactive:hover {
+  background-color: #e6e6e6;
 }

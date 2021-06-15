@@ -2,14 +2,14 @@ const lanIP = `${window.location.hostname}:5000`;
 const socket = io(`http://${lanIP}`);
 
 //#region ***  DOM references
-let rangeValueMoisture, rangeSliderMoisture, rangeSliderMoistureOptimal, warningMoistureIcon, warningMoisture, warningMoistureText;
-let rangeValueSunlight, rangeSliderSunlight, rangeSliderSunlightOptimal, warningSunlightIcon, warningSunlight, warningSunlightText;
-let rangeValueTemperature, rangeSliderTemperature, rangeSliderTemperatureOptimal, warningTemperatureIcon, warningTemperature, warningTemperatureText;
-let rangeValueHumidity, rangeSliderHumidity, rangeSliderHumidityOptimal, warningHumidityIcon, warningHumidity, warningHumidityText;
-let rangeValueAir, rangeSliderAir, rangeSliderAirOptimal, warningAirIcon, warningAir, warningAirText;
+let rangeValueMoisture, rangeSliderMoisture, rangeSliderMoistureOptimal, warningMoistureIcon, warningMoisture;
+let rangeValueSunlight, rangeSliderSunlight, rangeSliderSunlightOptimal, warningSunlightIcon, warningSunlight;
+let rangeValueTemperature, rangeSliderTemperature, rangeSliderTemperatureOptimal, warningTemperatureIcon, warningTemperature;
+let rangeValueHumidity, rangeSliderHumidity, rangeSliderHumidityOptimal, warningHumidityIcon, warningHumidity;
+let rangeValueAir, rangeSliderAir, rangeSliderAirOptimal, warningAirIcon, warningAir;
 
-let screenStatus, screenButton, screenFace;
-let speakerStatus, speakerButton;
+let screenState, screenButton, screenFace;
+let speakerState, speakerButton;
 //#endregion
 
 //#region ***  Callback-Visualisation - show___         ***********
@@ -52,7 +52,6 @@ const showSlider = function (rangeValue, rangeSlider) {
   rangeValue.style.marginLeft = (value - center) * multiplier + 'px';
 
   listenToWarning();
-  showFace();
 };
 
 const showWarning = function (slider, optimal, warning, icon, messageMin, messageMax) {
@@ -73,62 +72,56 @@ const showWarning = function (slider, optimal, warning, icon, messageMin, messag
     icon.srcset = 'style/img/svg/close_black_48dp.svg';
   } else {
     warning.classList.add('u-hidden');
+    icon.srcset = 'style/img/svg/done_black_48dp.svg'
   }
 };
 
-const showFace = function () {
-  if (screenStatus == true) {
-    let moistValue = parseInt(rangeSliderMoisture.value);
-    let moistMin = parseInt(rangeSliderMoistureOptimal.min);
-    let moistMax = parseInt(rangeSliderMoistureOptimal.max);
+const showFace = function (face) {
+  if (face=='thirsty'){
+    screenFace.srcset = 'style/img/svg/face_thirsty.svg';
+  }
+  else if (face=='sick'){
+    screenFace.srcset = 'style/img/svg/face_sick.svg';
+  }
+  else if (face=='cold'){
+    screenFace.srcset = 'style/img/svg/face_cold.svg';
+  }
+  else if (face=='hot'){
+    screenFace.srcset = 'style/img/svg/face_hot.svg';
+  }
+  else if (face=='sad'){
+    screenFace.srcset = 'style/img/svg/face_sad.svg';
+  }
+  else if (face=='normal'){
+    screenFace.srcset = 'style/img/svg/face_normal.svg';
+  }
+};
 
-    let sunValue = parseInt(rangeSliderSunlight.value);
-    let sunMin = parseInt(rangeSliderSunlightOptimal.min);
-    let sunMax = parseInt(rangeSliderSunlightOptimal.max);
-
-    let tempValue = parseInt(rangeSliderTemperature.value);
-    let tempMin = parseInt(rangeSliderTemperatureOptimal.min);
-    let tempMax = parseInt(rangeSliderTemperatureOptimal.max);
-
-    let humiValue = parseInt(rangeSliderHumidity.value);
-    let humiMin = parseInt(rangeSliderHumidityOptimal.min);
-    let humiMax = parseInt(rangeSliderHumidityOptimal.max);
-
-    let airValue = parseInt(rangeSliderAir.value);
-    let airMin = parseInt(rangeSliderAirOptimal.min);
-    let airMax = parseInt(rangeSliderAirOptimal.max);
-
-    if (moistValue < moistMin || humiValue < humiMin) {
-      screenFace.srcset = 'style/img/svg/face_thirsty.svg';
-      socket.emit('F2B_sendFace', { 'statusFace': 'thirsty', 'statusSpeaker': speakerStatus });
-    } else if (moistValue > moistMax || humiValue > humiMax) {
-      screenFace.srcset = 'style/img/svg/face_sick.svg';
-      socket.emit('F2B_sendFace', { 'statusFace': 'sick', 'statusSpeaker': speakerStatus });
-    } else if (sunValue < sunMin || tempValue < tempMin) {
-      screenFace.srcset = 'style/img/svg/face_cold.svg';
-      socket.emit('F2B_sendFace', { 'statusFace': 'cold', 'statusSpeaker': speakerStatus });
-    } else if (sunValue > sunMax || tempValue > tempMax) {
-      screenFace.srcset = 'style/img/svg/face_hot.svg';
-      socket.emit('F2B_sendFace', { 'statusFace': 'hot', 'statusSpeaker': speakerStatus });
-    } else if (airValue < airMin) {
-      screenFace.srcset = 'style/img/svg/face_sad.svg';
-      socket.emit('F2B_sendFace', { 'statusFace': 'sad', 'statusSpeaker': speakerStatus });
-    } else if (airValue > airMax) {
-      screenFace.srcset = 'style/img/svg/face_sad.svg';
-      socket.emit('F2B_sendFace', { 'statusFace': 'sad', 'statusSpeaker': speakerStatus });
-    } else {
-      screenFace.srcset = 'style/img/svg/face_normal.svg';
-      socket.emit('F2B_sendFace', { 'statusFace': 'normal', 'statusSpeaker': false });
-    }
+const showButtons = function(){
+  if (screenState == true){
     screenFace.classList.remove('u-hidden');
-    screenButton.innerHTML = 'Turn screens off';
-
-  } else {
+    screenButton.innerHTML = 'Turn screens and speakers off';
+    screenButton.classList.remove('u-inactive')
+    screenButton.classList.add('u-active')
+  }
+  else {
     screenFace.classList.add('u-hidden');
     screenButton.innerHTML = 'Turn screens on';
-    socket.emit('F2B_sendFace', { 'statusFace': 'OFF', 'statusSpeaker': false });
+    screenButton.classList.add('u-inactive')
+    screenButton.classList.remove('u-active')
   }
-};
+
+  if (speakerState == true){
+    speakerButton.innerHTML = 'Turn speakers off'
+    speakerButton.classList.remove('u-inactive')
+    speakerButton.classList.add('u-active')
+  }
+  else {
+    speakerButton.innerHTML = 'Turn speakers on'
+    speakerButton.classList.add('u-inactive')
+    speakerButton.classList.remove('u-active')
+  }
+}
 //#endregion
 
 //#region ***  Callback-No Visualisation - callback___  ***********
@@ -179,28 +172,36 @@ const listenToWarning = function () {
 
 const listenToUI = function () {
   screenButton.addEventListener('click', function () {
-    screenStatus = !screenStatus;
-    showFace()
+    socket.emit('F2B_toggle_face')
+    screenState = !screenState
+    console.log(`face ${screenState}`)
+    showButtons()
   });
 
   speakerButton.addEventListener('click', function () {
-    speakerStatus = !speakerStatus;
-    if (speakerStatus == true){
-      console.log('speakers on')
-      speakerButton.innerHTML = 'Turn speakers off'
-    }
-    else {
-      console.log('speakers off')
-      speakerButton.innerHTML = 'Turn speakers on'
-    }
-    showFace()
+    socket.emit('F2B_toggle_speakers')
+    speakerState = !speakerState
+    console.log(`speakers ${speakerState}`)
+    showButtons()
   });
+
+  shutdownButton.addEventListener('click', function(){
+    console.log('shutting down Plantly')
+    socket.emit('F2B_shutdown')
+  })
 };
 
 const listenToSocket = function () {
   socket.on('connect', function () {
     console.log('Connected with socket webserver');
   });
+
+  socket.on('B2F_send_states', function(jsonObject){
+    console.log(jsonObject)
+    screenState = jsonObject.FaceState
+    speakerState = jsonObject.SpeakerState
+    showButtons()
+  })
 
   socket.on('B2F_send_data', function (jsonObject) {
     console.log(jsonObject);
@@ -220,6 +221,11 @@ const listenToSocket = function () {
     rangeSliderAir.value = jsonObject.Air;
     showSlider(rangeValueAir, rangeSliderAir);
   });
+
+  socket.on('B2F_send_face', function(jsonObject){
+    console.log(jsonObject)
+    showFace(jsonObject.face)
+  })
 };
 //#endregion
 
@@ -230,42 +236,39 @@ const init = function () {
   rangeSliderMoistureOptimal = document.querySelector('.js-rangeSliderMoistureOptimal');
   warningMoistureIcon = document.querySelector('.js-warningMoistureIcon');
   warningMoisture = document.querySelector('.js-warningMoisture');
-  warningMoistureText = document.querySelector('.js-warningMoistureText');
 
   rangeValueSunlight = document.querySelector('.js-rangeValueSunlight');
   rangeSliderSunlight = document.querySelector('.js-rangeSliderSunlight');
   rangeSliderSunlightOptimal = document.querySelector('.js-rangeSliderSunlightOptimal');
   warningSunlightIcon = document.querySelector('.js-warningSunlightIcon');
   warningSunlight = document.querySelector('.js-warningSunlight');
-  warningSunlightText = document.querySelector('.js-warningSunlightText');
 
   rangeValueTemperature = document.querySelector('.js-rangeValueTemperature');
   rangeSliderTemperature = document.querySelector('.js-rangeSliderTemperature');
   rangeSliderTemperatureOptimal = document.querySelector('.js-rangeSliderTemperatureOptimal');
   warningTemperatureIcon = document.querySelector('.js-warningTemperatureIcon');
   warningTemperature = document.querySelector('.js-warningTemperature');
-  warningTemperatureText = document.querySelector('.js-warningTemperatureText');
 
   rangeValueHumidity = document.querySelector('.js-rangeValueHumidity');
   rangeSliderHumidity = document.querySelector('.js-rangeSliderHumidity');
   rangeSliderHumidityOptimal = document.querySelector('.js-rangeSliderHumidityOptimal');
   warningHumidityIcon = document.querySelector('.js-warningHumidityIcon');
   warningHumidity = document.querySelector('.js-warningHumidity');
-  warningHumidityText = document.querySelector('.js-warningHumidityText');
 
   rangeValueAir = document.querySelector('.js-rangeValueAir');
   rangeSliderAir = document.querySelector('.js-rangeSliderAir');
   rangeSliderAirOptimal = document.querySelector('.js-rangeSliderAirOptimal');
   warningAirIcon = document.querySelector('.js-warningAirIcon');
   warningAir = document.querySelector('.js-warningAir');
-  warningAirText = document.querySelector('.js-warningAirText');
 
-  screenStatus = true;
+  screenState = true
   screenButton = document.querySelector('.js-screenButton');
   screenFace = document.querySelector('.js-screenFace');
 
-  speakerStatus = false;
+  speakerState = false
   speakerButton = document.querySelector('.js-speakerButton');
+
+  shutdownButton = document.querySelector('.js-shutdownButton')
 };
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -275,9 +278,8 @@ document.addEventListener('DOMContentLoaded', function () {
   init();
   showWidth();
   listenToResize();
-  listenToSocket();
   listenToRangeSlider();
+  listenToSocket();
   listenToUI();
-  showFace()
 });
 //#endregion

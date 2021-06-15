@@ -39,7 +39,8 @@ class SPI:
 # spi = SPI()
 # try:
 #     while True:
-#         spi.read_air()
+#         print(spi.read_moist())
+#         time.sleep(0.5)
 # except KeyboardInterrupt as e:
 #     print(e)
 # finally:

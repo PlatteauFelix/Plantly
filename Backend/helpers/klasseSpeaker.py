@@ -14,7 +14,8 @@ class Speaker:
         for i in range(500, 1200):
             self.pwm.ChangeFrequency(i)
             time.sleep(0.001)
-            print(i)
+            # print(i)
+        self.quiet()
 
     def playTone(self):
         self.pwm.ChangeDutyCycle(80)
@@ -22,6 +23,7 @@ class Speaker:
         time.sleep(0.25)
         self.pwm.ChangeDutyCycle(0)
         time.sleep(1)
+        self.quiet()
         
 
     def quiet(self):
@@ -33,4 +35,4 @@ class Speaker:
 
 # speaker = Speaker()
 # while True:
-#     speaker.playTone()
+#     speaker.playAlarm()

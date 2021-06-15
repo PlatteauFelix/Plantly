@@ -10,22 +10,18 @@ class DataRepository:
             gegevens = request.form.to_dict()
         return gegevens
 
-    #########  logging  #########
+    #########  reading  #########
     @staticmethod
     def read_history():
-        sql = 'SELECT * FROM History ORDER BY ActionDate DESC'
-        return Database.get_rows(sql)
-
-    def read_actions():
-        sql = 'SELECT * FROM Action'
+        sql = 'SELECT HistoryID, ActionDate, Value, Name, Action.Description FROM History INNER JOIN Action ON History.ActionID = Action.ActionID INNER JOIN Devices ON History.DeviceID = Devices.DeviceID ORDER BY ActionDate desc'
         return Database.get_rows(sql)
 
     def read_devices():
-        sql = 'SELECT * FROM Devices'
+        sql = 'SELECT DeviceID, Name, Description, Type, COALESCE(MinValue, \'\') as `MinValue`, COALESCE(Devices.MaxValue, \'\') as `MaxValue`, COALESCE(Unit, \'\') as `Unit` FROM Devices;'
         return Database.get_rows(sql)
 
 
-
+    #########  logging  #########
     @staticmethod
     def create_log_moist(date, value, deviceID='MOIST', actionID=5):
         sql = "INSERT INTO History(ActionDate, Value, DeviceID, ActionID) VALUES(%s,%s,%s,%s)"
@@ -64,6 +60,12 @@ class DataRepository:
 
     @staticmethod
     def create_log_air(date, value, deviceID='AIR', actionID=6):
+        sql = "INSERT INTO History(ActionDate, Value, DeviceID, ActionID) VALUES(%s,%s,%s,%s)"
+        params = [date, value, deviceID, actionID]
+        return Database.execute_sql(sql, params)
+
+    @staticmethod
+    def create_log_actuator(date, value, deviceID, actionID=1):
         sql = "INSERT INTO History(ActionDate, Value, DeviceID, ActionID) VALUES(%s,%s,%s,%s)"
         params = [date, value, deviceID, actionID]
         return Database.execute_sql(sql, params)

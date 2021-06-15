@@ -93,9 +93,8 @@ class LCD(object):
 #         ips = check_output(['hostname', '--all-ip-addresses']).split()
 #         lan = ips[0].decode()
 #         wlan = ips[1].decode()
-#         lcd.lcd_string(f'Static LAN: {lan}', lcd.LCD_LINE_1)
-#         lcd.lcd_string(f'Dynamic WLAN: {wlan}', lcd.LCD_LINE_2)
-#         lcd.scrollDisplayLeft()
+#         lcd.lcd_string(f'{lan}', lcd.LCD_LINE_1)
+#         lcd.lcd_string(f'{wlan}', lcd.LCD_LINE_2)
 
 
 # except KeyboardInterrupt:

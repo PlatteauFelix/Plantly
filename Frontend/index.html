@@ -6,8 +6,9 @@
         <title>Plantly - Felix Platteau</title>
         <meta name="description" content="Project One">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="msapplication-TileColor" content="#78C278">
-        <meta name="theme-color" content="#78C278">
+        <meta name="msapplication-TileColor" content="#78c278">
+        <link rel="icon" type="image/svg" href="style/img/svg/logo.svg"/>
+        <meta name="theme-color" content="#78c278">
 
         <link rel="stylesheet" href="style/css/normalize.css">
         <link rel="stylesheet" href="style/css/screen.css">
@@ -25,6 +26,10 @@
                 </header>
             </a>
 
+            <a class="c-shutdown--button js-shutdownButton" href="#!">
+                <img src="style/img/svg/power_settings_new_black_48dp.svg" alt="Power button">
+            </a>
+
 
             <section class="o-intro c-intro">
                 <!-- <h1 class="c-intro__title">
@@ -33,16 +38,16 @@
                 <p class="c-intro__text u-color-text">
                     Here you can see the stats and needs of your precious plant.
                 </p> -->
-                <img class="c-intro__image js-screenFace" src="style/img/svg/face_normal.svg" alt="Face plantly">
-                <a href="#!" class="c-intro__button js-screenButton u-color-background-dark">Turn screens and speakers off</a>
-                <a href="#!" class="c-intro__button js-speakerButton u-color-background-dark">Turn speakers on</a>
+                <img class="c-intro__image js-screenFace u-hidden" src="style/img/svg/face_normal.svg" alt="Face plantly">
+                <a href="#!" class="c-intro__button js-screenButton u-inactive">Turn screens on</a>
+                <a href="#!" class="c-intro__button js-speakerButton u-inactive">Turn speakers on</a>
             </section>
         </div>
 
 
         
-        <section class="o-content u-color-background-dark">
-            <article class="o-article u-color-background-dark">
+        <section class="o-content u-color-background-light">
+            <article class="o-article u-color-background-light">
                 <div class="c-sensor">
                     <img class="c-sensor__icon" src="style/img/svg/water_drop_black_48dp.svg" alt="Water drop">
                     <h2 class="c-sensor__title">Moisture</h2>
@@ -51,8 +56,8 @@
                 <span class="c-rangeValue c-rangeValue__percent js-rangeValueMoisture">50</span>
                 <div class="c-range">
                     <p class="c-rangeMin">0</p>
-                    <input class="c-rangeSliderOptimal js-rangeSliderMoistureOptimal" type="range" value="50" min="30" max="70"></input>
-                    <input class="c-rangeSlider js-rangeSliderMoisture" type="range" value="50" min="0" max="100" ></input>
+                    <input class="c-rangeSliderOptimal js-rangeSliderMoistureOptimal" type="range" value="50" min="30" max="70" disabled></input>
+                    <input class="c-rangeSlider js-rangeSliderMoisture" type="range" value="50" min="0" max="100" disabled></input>
                     <p class="c-rangeMax">100</p>
                 </div>
                 <div class="c-warning js-warningMoisture u-hidden">
@@ -70,8 +75,8 @@
                 <span class="c-rangeValue c-rangeValue__lux js-rangeValueSunlight">5000</span>
                 <div class="c-range">
                     <p class="c-rangeMin">0</p>
-                    <input class="c-rangeSliderOptimal js-rangeSliderSunlightOptimal" type="range" value="5000" min="200" max="4000"></input>
-                    <input class="c-rangeSlider js-rangeSliderSunlight" type="range" value="2000" min="0" max="10000" ></input>
+                    <input class="c-rangeSliderOptimal js-rangeSliderSunlightOptimal" type="range" value="5000" min="200" max="4000" disabled></input>
+                    <input class="c-rangeSlider js-rangeSliderSunlight" type="range" value="2000" min="0" max="10000" disabled></input>
                     <p class="c-rangeMax">10000</p>
                 </div>
                 <div class="c-warning js-warningSunlight u-hidden">
@@ -79,7 +84,7 @@
                     <p class="js-warningSunlightText">Sunlight level is too low. Keep it between the marked values for the optimal health of your plant.</p>
                 </div>                
             </article>
-            <article class="o-article u-color-background-dark">
+            <article class="o-article u-color-background-light">
                 <div class="c-sensor">
                     <img class="c-sensor__icon" src="style/img/svg/thermostat_black_48dp.svg" alt="Thermostat">
                     <h2 class="c-sensor__title">Temperature</h2>
@@ -88,8 +93,8 @@
                 <span class="c-rangeValue c-rangeValue__degrees js-rangeValueTemperature">20</span>
                 <div class="c-range">
                     <p class="c-rangeMin">0</p>
-                    <input class="c-rangeSliderOptimal js-rangeSliderTemperatureOptimal" type="range" value="20" min="13" max="30"></input>
-                    <input class="c-rangeSlider js-rangeSliderTemperature" type="range" value="20" min="0" max="40" ></input>
+                    <input class="c-rangeSliderOptimal js-rangeSliderTemperatureOptimal" type="range" value="20" min="13" max="30" disabled></input>
+                    <input class="c-rangeSlider js-rangeSliderTemperature" type="range" value="20" min="0" max="40" disabled></input>
                     <p class="c-rangeMax">40</p>
                 </div>
                 <div class="c-warning js-warningTemperature u-hidden">
@@ -106,8 +111,8 @@
                 <span class="c-rangeValue c-rangeValue__percent js-rangeValueHumidity">50</span>
                 <div class="c-range">
                     <p class="c-rangeMin">0</p>
-                    <input class="c-rangeSliderOptimal js-rangeSliderHumidityOptimal" type="range" value="50" min="30" max="75"></input>
-                    <input class="c-rangeSlider js-rangeSliderHumidity" type="range" value="50" min="0" max="100" ></input>
+                    <input class="c-rangeSliderOptimal js-rangeSliderHumidityOptimal" type="range" value="50" min="30" max="75" disabled></input>
+                    <input class="c-rangeSlider js-rangeSliderHumidity" type="range" value="50" min="0" max="100" disabled></input>
                     <p class="c-rangeMax">100</p>
                 </div>
                 <div class="c-warning js-warningHumidity u-hidden">
@@ -115,7 +120,7 @@
                     <p class="js-warningHumidityText">Humidity level is too low. Keep it between the marked values for the optimal health of your plant.</p>
                 </div>                
             </article>
-            <article class="o-article u-color-background-dark">
+            <article class="o-article u-color-background-light">
                 <div class="c-sensor">
                     <img class="c-sensor__icon" src="style/img/svg/co2_black_48dp.svg" alt="CO2">
                     <h2 class="c-sensor__title">Air quality</h2>
@@ -124,8 +129,8 @@
                 <span class="c-rangeValue c-rangeValue__percent js-rangeValueAir">50</span>
                 <div class="c-range">
                     <p class="c-rangeMin">0</p>
-                    <input class="c-rangeSliderOptimal js-rangeSliderAirOptimal" type="range" value="50" min="0" max="21"></input>
-                    <input class="c-rangeSlider js-rangeSliderAir" type="range" value="5" min="0" max="100" ></input>
+                    <input class="c-rangeSliderOptimal js-rangeSliderAirOptimal" type="range" value="50" min="0" max="21" disabled></input>
+                    <input class="c-rangeSlider js-rangeSliderAir" type="range" value="5" min="0" max="100" disabled></input>
                     <p class="c-rangeMax">100</p>
                 </div>
                 <div class="c-warning js-warningAir u-hidden">
